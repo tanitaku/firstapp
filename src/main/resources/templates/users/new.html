@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table {
+	border-collapse: collapse;
+}
+	.col_name {width:200px;}
+	.col_data {width:400px;}
+form {display: inline;}		
+</style>
+</head>
+<body>
+<h1>住所録登録</h1>
+<form method="post" action="/create" th:object="${formModel}">
+<input type="hidden" name="id" th:value="*{id}">
+<table border="1">
+	<tr>
+		<th class="col_name">名前</th>
+		<td class="col_data">
+			<input type="text" name="name" th:value="*{name}" size="20" maxlength="20" />
+		</td>
+	</tr>
+	<tr>
+		<th>住所</th>
+		<td>
+			<input type="text" name="address" th:value="*{address}" size="40" maxlength="40" />
+		</td>
+	</tr>
+	<tr>
+		<th>電話番号</th>
+		<td>
+			<input type="text" name="tel" th:value="*{tel}" size="15" maxlength="15" />
+		</td>
+	</tr>				
+</table>
+<hr>
+<input type="submit" value="登録" />
+</form>
+<form action="/">
+	<input type="submit" value="戻る" />
+</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Users List</title>
+<style>
+table {
+	border-collapse: collapse;
+	}
+	.col_name {width: 100px;}
+	.col_address {width: 500px;}
+	.col_tel {width: 200px;}
+</style>
+</head>
+<body>
+<h1>住所録</h1>
+<table border="1">
+	<tr>
+		<th class="col_name">名前</th>
+		<th class="col_address">住所</th>
+		<th class="col_tel">電話番号</th>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr th:each="obj : ${data}">
+		<td th:text="${obj.name}"></td>
+		<td th:text="${obj.address}"></td>
+		<td th:text="${obj.tel}"></td>
+		<td>
+			<form action="/edit" method="get">
+				<input type="submit" value="編集">
+				<input type="hidden" name="id" th:value="${obj.id}">
+			</form>
+		</td>
+		<td>
+			<form action="/delete" method="post">
+				<input type="submit" value="削除">
+				<input type="hidden" name="id" th:value="${obj.id}">
+			</form>	
+		</td>	
+	</tr>	
+</table>
+<hr>
+<form action="/add">
+	<input type="submit" value="新規追加" />
+</form>
+</body>
+</html>
